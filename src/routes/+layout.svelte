@@ -3,6 +3,7 @@
 	import './styles.css';
 </script>
 
+<!-- Navbar og style til dels hentet fra Sveltes eksempel-app -->
 <header>
 	<nav>
 		<ul>

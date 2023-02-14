@@ -14,7 +14,7 @@
 				<a href="/eksempler_kap_5">Eksempler kap 5</a>
 			</li>
 			<li aria-current={$page.url.pathname === '/eksempler_kap_6' ? 'page' : undefined}>
-				<a href="eksempler_kap_6">Eksempler kap 6</a>
+				<a href="/eksempler_kap_6">Eksempler kap 6</a>
 			</li>
 		</ul>
 	</nav>
@@ -37,11 +37,15 @@
 		display: flex;
 		height: 100%;
 		align-items: center;
-		padding: 0 0.5rem;
+		padding: 0.5rem;
 		font-weight: 700;
 		letter-spacing: 0.1em;
 		text-decoration: none;
 		transition: color 0.2s linear;
+	}
+
+	nav a:hover {
+		background-color: antiquewhite;
 	}
 
 	li[aria-current='page']{

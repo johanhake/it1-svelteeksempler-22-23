@@ -19,7 +19,16 @@
 			{nr:"6.2.2", navn: "Objekter i lister"},
 			{nr:"6.2.3", navn: "Filtrere liste med filmer etter genre"},
 		],
+	]
 
+	const oppgaver = [
+		{nr:"6.03", navn: "Datamengde"},
+		{nr:"6.04", navn: "Telletall"},
+		{nr:"6.05", navn: "Tegne en linje"},
+		{nr:"6.06", navn: "Registrere stemmer"},
+		{nr:"6.07", navn: "Pinnkoder"},
+		{nr:"6.10", navn: "Sortere meny"},
+		{nr:"6.13", navn: "Registrere fravær elever"},
 	]
 
 </script>
@@ -38,13 +47,19 @@
 	</div>
 	{/each}
 </div>
+<h1>Oppgaver fra kap 6</h1>
+<div class="oppgaver">
+{#each oppgaver as oppgave}
+	<a href="/eksempler_kap_6/Oppgave_{oppgave.nr}_{(oppgave.navn.toLowerCase().split(" ").join("_"))}">{oppgave.nr} {oppgave.navn}</a>
+{/each}
+</div>
 
 <style>
 	.eksempler{
 		display: flex;
 		gap: 10px;
 	}
-	.eksempler > div{
+	.eksempler > div, .oppgaver{
 		flex: 0 1 250px;
 		display: flex;
 		flex-direction: column;
@@ -52,11 +67,11 @@
 	.eksempler > div > h3{
 		text-align: center;
 	}
-	.eksempler > div a{
+	.eksempler > div a, .oppgaver a{
 		text-decoration: none;
 		padding: 10px;
 	}
-	.eksempler > div a:hover{
+	.eksempler > div a:hover, .oppgaver a:hover{
 		background-color: antiquewhite;
 	}
 </style>

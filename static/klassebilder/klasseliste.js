@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+// Kopier denne listen til din egen fil!
 let elever = [
 	{
 		fornavn: "Kristian",

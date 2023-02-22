@@ -178,7 +178,7 @@
 	},
 	{
 		fornavn: "Nicolay",
-		etternavn: "Schiøtz",
+		etternavn: "Schiøtz-n",
 		kjønn: "M",
 		klasse: "3STF"
 	},
@@ -189,9 +189,18 @@
 		klasse: "3STF"
 	}
 ]
+	// Setter alle elever til å være tilstede
 	for (let elev of elever){
 		elev.tilstede = true
 	}
+
+	// Variabel for å vise eller ikke vise bildene
+	let viseBilder = false;
+
+	// Variabler brukt for å søke
+	let søkHva = ""
+	let søkTekst = ""
+	$:ikkeSøking = søkHva === "" || søkTekst === ""
 
 	// Reaktiv variabel som teller antall tilstede
 	$: tilstede = elever.filter(a=>a.tilstede).length
@@ -202,7 +211,7 @@
 		elever = elever
 	}
 
-	// Lytterfunksjon for å sortere
+	// Lytterfunksjon med parameter for hva som skal sorteres etter
 	const sorter = (hva) =>{
 		// Sortere hva etter stigende rekkefølge
 		if (stigende[hva]){
@@ -211,6 +220,7 @@
 			elever.sort((a,b)=>b[hva].localeCompare(a[hva]))
 		}
 		stigende[hva] = !stigende[hva]
+
 		// Trigge oppdatering av tabellen
 		elever = elever
 	}
@@ -224,31 +234,53 @@
 
 	</script>
 	<h2>
-		Tilstede: {tilstede} elever
+		Informasjonsteknologi 1
 	</h2>
-	<img src="/klassebilder/hake.png" alt="Hake">
+	<h3>Lærer: Johan Hake</h3>
+	<img src="/klassebilder/hake.jpg" alt="Hake">
+	<h3>Tilstede: {tilstede} elever</h3>
+	<label><input type="checkbox" bind:checked={viseBilder}>Vise bilder</label><br>
+	<label for="">
+		<select bind:value={søkHva}>
+			<option value="">Søk etter</option>
+			<option value="fornavn">Fornavn</option>
+			<option value="etternavn">Etternavn</option>
+			<option value="klasse">Klasse</option>
+		</select>
+		<input type="text" bind:value={søkTekst}>
+	</label>
 	<table>
 		<thead>
 			<tr>
-				<!-- Fikse reaktive sorterEtter -> retning -->
-				<th on:click={()=>{sorter("fornavn")}}>Fornavn {#if stigende.fornavn}▼{:else}▲{/if}</th>
-				<th on:click={()=>{sorter("etternavn")}}>Etternavn {#if stigende.etternavn}▼{:else}▲{/if}</th>
-				<th on:click={()=>{sorter("klasse")}}>Klasse {#if stigende.klasse}▼{:else}▲{/if}</th>
+				<th on:click={()=>{sorter("fornavn")}}>Fornavn {stigende.fornavn ? "▼":"▲"}</th>
+				<th on:click={()=>{sorter("etternavn")}}>Etternavn {stigende.etternavn ? "▼":"▲"}</th>
+				<th on:click={()=>{sorter("klasse")}}>Klasse {stigende.klasse ? "▼":"▲"}</th>
+				{#if viseBilder}
+				<th class="bilde">Bilde</th>
+				{/if}
 			</tr>
 		</thead>
 		<tbody>
 			{#each elever as elev}
+				{#if ikkeSøking || elev[søkHva].toLowerCase().includes(søkTekst.toLowerCase())}
 				<tr on:click={()=>{byttTilstede(elev)}}>
 					{#if elev.tilstede}
 						<td class="tilstede">{elev.fornavn}</td>
 						<td class="tilstede">{elev.etternavn}</td>
 						<td class="klasse tilstede">{elev.klasse}</td>
+						{#if viseBilder}
+							<td class="bilde"><img src="/klassebilder/{elev.etternavn.toLowerCase()}.jpg" alt=""></td>
+						{/if}
 					{:else}
 						<td>{elev.fornavn}</td>
 						<td>{elev.etternavn}</td>
 						<td class="klasse">{elev.klasse}</td>
+						{#if viseBilder}
+							<td class="bilde"><img class="bilde-ikke-tilstede" src="/klassebilder/{elev.etternavn.toLowerCase()}.jpg" alt=""></td>
+						{/if}
 					{/if}
 				</tr>
+				{/if}
 			{/each}
 		</tbody>
 	</table>
@@ -264,13 +296,24 @@
 			background-color: lightgreen;
 		}
 		td, th {
-			width: 120px;
+			width: 7em;
 			border: black 1px solid;
+			padding: 0.2em;
+		}
+		.bilde {
+			width: 5em;
 		}
 		tr:hover{
 			cursor: pointer;
 		}
 
+		td img{
+			height: 4em;
+			border: 3px rgba(0,0,0,0) solid;
+		}
+		.bilde-ikke-tilstede{
+			border: 3px red solid
+		}
 		.klasse{
 			text-align: center;
 		}

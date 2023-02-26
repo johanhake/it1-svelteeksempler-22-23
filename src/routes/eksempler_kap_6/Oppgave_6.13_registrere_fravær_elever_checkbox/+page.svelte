@@ -197,12 +197,6 @@
 	// Reaktiv variabel som teller antall tilstede
 	$: tilstede = elever.filter(a=>a.tilstede).length
 
-	// Lytterfunksjon for å registrere tilstedeværelese for elev
-	const byttTilstede = (elev)=>{
-		elev.tilstede = !elev.tilstede
-		elever = elever
-	}
-
 	</script>
 	<h2>
 		Informasjonsteknologi 1
@@ -214,14 +208,16 @@
 				<th>Fornavn</th>
 				<th>Etternavn</th>
 				<th>Klasse</th>
+				<th>Tilstede</th>
 			</tr>
 		</thead>
 		<tbody>
 			{#each elever as elev}
-				<tr on:click={()=>{byttTilstede(elev)}}>
+				<tr>
 					<td class={elev.tilstede ? "tilstede" : ""}>{elev.fornavn}</td>
 					<td class={elev.tilstede ? "tilstede" : ""}>{elev.etternavn}</td>
 					<td class="klasse {elev.tilstede ? "tilstede" : ""}">{elev.klasse}</td>
+					<td><label><input type="checkbox" bind:checked={elev.tilstede}> </label></td>
 				</tr>
 			{/each}
 		</tbody>
@@ -242,7 +238,10 @@
 			border: black 1px solid;
 			padding: 0.2em;
 		}
-		tr:hover{
+		td label{
+			display: block;
+			width: 100%;
+			text-align: center;
 			cursor: pointer;
 		}
 

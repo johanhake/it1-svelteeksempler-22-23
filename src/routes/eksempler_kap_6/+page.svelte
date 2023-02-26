@@ -18,6 +18,9 @@
 			{nr:"6.2.1", navn: "Endre verdi til objekt"},
 			{nr:"6.2.2", navn: "Objekter i lister"},
 			{nr:"6.2.3", navn: "Filtrere liste med filmer etter genre"},
+		],[
+			{nr:"6.3.2", navn: "Lese inn data fra en JSON-fil"},
+			{nr:"6.3.4", navn: "Vise frem en liste med kjente gitarer"},
 		],
 	]
 
@@ -28,7 +31,15 @@
 		{nr:"6.06", navn: "Registrere stemmer"},
 		{nr:"6.07", navn: "Pinnkoder"},
 		{nr:"6.10", navn: "Sortere meny"},
+		{nr:"6.12", navn: "Fotballtabell"},
+		{nr:"6.13", navn: "Registrere fravær elever checkbox"},
 		{nr:"6.13", navn: "Registrere fravær elever"},
+		{nr:"6.13", navn: "Registrere fravær elever json"},
+		{nr:"6.14", navn: "Landinformasjon"},
+		{nr:"6.15", navn: "Sprinttider"},
+		{nr:"6.16", navn: "Alfabetet"},
+		{nr:"6.17", navn: "Brukernavn"},
+		{nr:"6.18", navn: "Landinfo"},
 	]
 
 </script>

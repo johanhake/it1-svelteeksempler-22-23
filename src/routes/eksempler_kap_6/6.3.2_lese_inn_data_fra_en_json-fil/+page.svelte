@@ -1,8 +1,18 @@
 <script>
 	// @ts-nocheck
 
-	const data = fetch('https://kode-1.github.io/person.json');
-	const person = data.json();
+	/*
+	let person;
+
+	const hentPerson = async() => {
+		const data = await fetch('https://kode-1.github.io/person.json')
+		person = await data.json()
+	}
+
+	hentPerson()
+   */
+
+	import person from "./person.json"
 
 </script>
 

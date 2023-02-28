@@ -1,19 +1,13 @@
 <script>
-	// @ts-nocheck
+// @ts-nocheck
 
-	/*
-	let person;
-
-	const hentPerson = async() => {
-		const data = await fetch('https://kode-1.github.io/person.json')
-		person = await data.json()
+	let person = ""
+	const hentPerson = async () => {
+		const data = await fetch("https://kode-1.github.io/person.json");
+		const json = await data.json()
+		person = json
 	}
-
 	hentPerson()
-   */
-
-	import person from "./person.json"
-
 </script>
 
 {#if person}

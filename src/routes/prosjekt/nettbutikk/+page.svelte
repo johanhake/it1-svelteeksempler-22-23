@@ -7,11 +7,20 @@
 	}
 
 	// Handlekurv
-	let handlekurv = [];
+	let handlekurv = []
+
+	let totalPris = 0
 
 	// Variabel for total pris
 	// Lag reaktiv kode som beregner totalprisen til det som er i handlekurven
-	$: totalPris = 0;
+	$: {
+
+		totalPris = 0;
+		for (let vare of handlekurv){
+			totalPris += vare.pris*vare.antall
+		}
+		console.log("totalPris",totalPris)
+	}
 
 	// Variabel for visning av pris
 	let visMaksPris = 2600;
@@ -31,11 +40,26 @@
 	// Tømmer handlekurven
 	const tomKurv = () => {
 		console.log("tøm handlekurv");
+		handlekurv = []
 	};
+
+	// Sletter en vare med gitt indeks
+	const slettVare = (indeks) => {
+		console.log("sletter: ", handlekurv[indeks].navn)
+		handlekurv.splice(indeks, 1);
+		handlekurv = handlekurv;
+	}
 
 	// Legger i handlekurv
 	const leggIHandlekurv = (vare) => {
-		console.log("Legger", vare.navn, "i handlekurv")
+		if (vare.antall === 0){
+			return;
+		}
+		console.log("Legger", vare.navn, "i handlekurv", vare.antall)
+		handlekurv.push({navn:vare.navn, pris: vare.pris, antall: vare.antall})
+		vare.antall = 0;
+		handlekurv = handlekurv
+		varer = varer
 	}
 
 </script>
@@ -63,10 +87,12 @@
 	<sidebar id="txtHandlekurv">
 		<h3>Handlekurv</h3>
 		<!-- Går igjennom alle varene i handlekurven -->
-		{#each handlekurv as kurv}
-			{kurv.navn}
+		{#each handlekurv as kurv, indeks}
+			<button class="slett" on:click={()=>{slettVare(indeks)}}>×</button>
+			<article>{kurv.antall} x {kurv.navn}</article>
+			<article>{kurv.pris*kurv.antall} kr</article>
 		{/each}
-
+		<article></article>
 		<article><b>Total pris:</b></article>
 		<article><b>{totalPris} kr</b></article>
 	</sidebar>
@@ -74,12 +100,14 @@
 	<main>
 		<!-- Går igjennom alle varene i listen varer-->
 		{#each varer as vare}
+			{#if vare.pris <= visMaksPris && (visPlagg === "alle" || visPlagg ===vare.plagg)}
 			<article>
 				<img src="/butikkbilder/{vare.bilde}" alt="" />
 				<h6>{vare.type} {vare.navn} <i>{vare.pris} kr</i></h6>
 				<input type="number" bind:value={vare.antall} min="0" />
 				<button class="button" on:click={()=>{leggIHandlekurv(vare)}}>Legg i Handlekurv</button>
 			</article>
+			{/if}
 		{/each}
 	</main>
 {/if}
@@ -133,11 +161,29 @@
 	/* Vil bare brukes hvis handlekurv er med */
 	#txtHandlekurv {
 		display: grid;
-		grid-template-columns: 3fr 1fr;
+		grid-template-columns: 1fr 6fr 2fr;
 		width: 400px;
 	}
 
+	.slett{
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 1.2em;
+		cursor:pointer;
+	}
+
+	.slett:hover{
+		color: red;
+	}
+
+	.slett:active{
+		color: darkred;
+	}
+
+
+
 	#txtHandlekurv h3 {
-		grid-column: span 2;
+		grid-column: span 3;
 	}
 </style>

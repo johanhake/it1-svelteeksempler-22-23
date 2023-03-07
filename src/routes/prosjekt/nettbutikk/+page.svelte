@@ -1,4 +1,6 @@
 <script>
+// @ts-nocheck
+
 	import varer from "./nettbutikk.json";
 
 	// Legger inn antall i hvert vare-objekt

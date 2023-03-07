@@ -18,6 +18,7 @@
 			{nr:"6.2.1", navn: "Endre verdi til objekt"},
 			{nr:"6.2.2", navn: "Objekter i lister"},
 			{nr:"6.2.3", navn: "Filtrere liste med filmer etter genre"},
+			{nr:"6.2.4", navn: "Legge til skurker"},
 		],[
 			{nr:"6.3.2", navn: "Lese inn data fra en JSON-fil"},
 			{nr:"6.3.4", navn: "Vise frem en liste med kjente gitarer"},

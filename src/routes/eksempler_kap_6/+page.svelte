@@ -36,6 +36,7 @@
 		{nr:"6.13", navn: "Registrere fravær elever checkbox"},
 		{nr:"6.13", navn: "Registrere fravær elever"},
 		{nr:"6.13", navn: "Registrere fravær elever json"},
+		{nr:"6.13", navn: "Registrere fravær elever full"},
 		{nr:"6.14", navn: "Landinformasjon"},
 		{nr:"6.15", navn: "Sprinttider"},
 		{nr:"6.16", navn: "Alfabetet"},

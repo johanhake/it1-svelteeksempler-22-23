@@ -22,7 +22,11 @@
 		],[
 			{nr:"6.3.2", navn: "Lese inn data fra en JSON-fil"},
 			{nr:"6.3.4", navn: "Vise frem en liste med kjente gitarer"},
-		],
+		],[
+			{nr:"6.4.2", navn: "Chuck Norris vitser"},
+			{nr:"6.4.3", navn: "Sminkevarer"},
+			{nr:"6.4.5", navn: "Emojisøk"},
+		]
 	]
 
 	const oppgaver = [

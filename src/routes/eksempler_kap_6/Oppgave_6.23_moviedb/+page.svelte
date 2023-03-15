@@ -14,7 +14,7 @@
 
 	const søkFilmer = async(pageLocal) => {
 		const SØKE_TEKST = søkeTekst.split(" ").join("+")
-		url = BASEURL + "search/movie?api_key=" + KEY + SPRÅK + "&include_adult=true&query=" + SØKE_TEKST + "&page=" + pageLocal;
+		url = BASEURL + "search/movie?api_key=" + KEY + SPRÅK + "&include_adult=false&query=" + SØKE_TEKST + "&page=" + pageLocal;
 		console.log(url)
 		const data = await fetch(url);
 		const json = await data.json();

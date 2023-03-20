@@ -17,9 +17,17 @@ let nyAlder = ""
 
 
 const endreNavnet = ()=>{
+    navn.set(nyttNavn)
+    bruker.update(data => {
+      data.fornavn = nyttNavn
+      return data
+    })
+    nyttNavn = ""
 }
 
 const endreAlderen = ()=>{
+  alder.set(nyAlder)
+  nyAlder = ""
 }
 
 </script>
@@ -28,3 +36,6 @@ const endreAlderen = ()=>{
 
 <input type="text" bind:value={nyttNavn} on:change={endreNavnet}>
 <input type="number" bind:value={nyAlder} on:change={endreAlderen}>
+
+
+<h2>{$bruker.fornavn}</h2>

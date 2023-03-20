@@ -50,6 +50,9 @@
 		{nr:"6.17", navn: "Brukernavn"},
 		{nr:"6.18", navn: "Landinfo"},
 		{nr:"6.23", navn: "MovieDB"},
+		{nr:"6.27", navn: "Teller opp"},
+		{nr:"6.27", navn: "Teller ned"},
+		{nr:"6.28", navn: "Terningsspill"},
 	]
 
 </script>

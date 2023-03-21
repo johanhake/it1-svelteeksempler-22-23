@@ -29,6 +29,7 @@
 		],[
 			{nr:"6.5.1", navn: "Lagre data"},
 			{nr:"6.5.2", navn: "Hente frem data"},
+			{nr:"6.7.1", navn: "URL parametere"},
 		]
 	]
 

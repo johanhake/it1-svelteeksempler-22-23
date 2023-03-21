@@ -101,11 +101,13 @@
 {:else}
 	<main>
 		<!-- Går igjennom alle varene i listen varer-->
-		{#each varer as vare}
+		{#each varer as vare, indeks}
 			{#if vare.pris <= visMaksPris && (visPlagg === "alle" || visPlagg ===vare.plagg)}
 			<article>
-				<img src="/butikkbilder/{vare.bilde}" alt="" />
-				<h6>{vare.type} {vare.navn} <i>{vare.pris} kr</i></h6>
+				<a href="/prosjekt/nettbutikk/enkeltvare?vare={indeks}">
+					<img src="/butikkbilder/{vare.bilde}" alt="" />
+					<h6>{vare.type} {vare.navn} <i>{vare.pris} kr</i></h6>
+				</a>
 				<input type="number" bind:value={vare.antall} min="0" />
 				<button class="button" on:click={()=>{leggIHandlekurv(vare)}}>Legg i Handlekurv</button>
 			</article>

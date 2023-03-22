@@ -19,5 +19,5 @@
     <option value="torsk">Torsk</option>
     <option value="taco">Taco</option>
   </select>
-  <button>OK</button>
+  <button>Send inn</button>
 </form>

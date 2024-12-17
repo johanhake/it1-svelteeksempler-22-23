@@ -7,4 +7,5 @@ import { persisted } from 'svelte-local-storage-store'
 export const navn = persisted("navn", "Johan")
 export const alder = persisted("alder", 46)
 export const bruker = persisted("bruker", {brukernavn: "Zvinto", fornavn: "Johan", etternavn: "Hake"})
+export const highscores = persisted("highscores", [["Johan", 34]])
 
